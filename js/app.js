@@ -24,9 +24,10 @@ Enemy.prototype.update = function(dt) {
 
 // Reset enemy location upon reaching randomly generated endpoint range
 Enemy.prototype.reset = function() {
-    if (this.x >= borders.right + randomInt(100, 300)) {
+    var random = Math.floor(Math.random() * (300 - 100 + 1)) + 100;
+    if (this.x >= borders.right + random) {
         this.x = -110;
-        this.speed = randomInt(100, 400);
+        this.speed = Math.floor(Math.random() * (400 - 100 + 1)) + 100;
     }
 };
 
@@ -57,6 +58,7 @@ Player.prototype.update = function(dt) {
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     ctx.font = "24px Arial";
+    ctx.clearRect (400, 40, 100, -40);
     ctx.fillText("Score: " + this.score, 400, 40);
 };
 
@@ -69,9 +71,6 @@ Player.prototype.reset = function () {
 //translates input to player movement. Resets the player
 //once player reaches the top of the canvas (water sprite) and 
 //increases the score
-////////////////////////////////////////////////////////////
-//   bug: canvas is not refeshing when score changes     ///
-////////////////////////////////////////////////////////////
 Player.prototype.handleInput = function(direction) {
     if (direction === 'left' && this.x !== borders.left) {
         this.x -= 101;
