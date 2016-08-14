@@ -1,6 +1,10 @@
-frontend-nanodegree-arcade-game
-===============================
+#Frogger game clone, Udacity OOJS assignment
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+##About the game:
+You are the player, trying to cross the field without colliding into the enemies (bugs). Use the arrow keys to move left, right, up, down. If you collide with an enemy, your location is reset. If you reach the water without colliding with an enemy, your location is reset and your score increases by 1. 
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+##Installation instructions:
+Download the entirety of the repository and open INDEX.html with your browser. The game automatically starts once the page is fully loaded. 
+
+##Known Bugs: 
+The score marker does not refresh automatically, instead the new score is overwritten onto the old score, eventually creating a solid black character rectangle.

@@ -18,6 +18,7 @@ var Enemy = function(x, y, speed) {
 // Parameter: dt, a time delta between ticks
 // Moves the enemy and executes reset
 Enemy.prototype.update = function(dt) {
+    //@@@@confused as to how this works. esp the part where this.x += this.speed * dt; also why is this not leaving a trail of sprites?  ~TL
     this.x += this.speed * dt;
     this.reset();
 };
@@ -44,7 +45,7 @@ var Player = function() {
     //locates player
     this.x = this.StartX;
     this.y = this.StartY;
-    this.score = 0;
+    this.score = 0
 };
 
 // Parameter: dt, a time delta between ticks
@@ -69,9 +70,6 @@ Player.prototype.reset = function () {
 //translates input to player movement. Resets the player
 //once player reaches the top of the canvas (water sprite) and 
 //increases the score
-////////////////////////////////////////////////////////////
-//   bug: canvas is not refeshing when score changes     ///
-////////////////////////////////////////////////////////////
 Player.prototype.handleInput = function(direction) {
     if (direction === 'left' && this.x !== borders.left) {
         this.x -= 101;
@@ -96,6 +94,7 @@ Player.prototype.collide = function () {
     //iterates through enemy instances, collects the location of enemy 
     //instance vs. player instance, if less than specified margin, 
     //resets player 
+    //@@@@@@@ not sure how I got this to work. Why does this get called in the .update and not the main class? TL
     for (i = 0; i < allEnemies.length; i++) {
         var margin = 50;
         if (Math.abs(allEnemies[i].x - this.x) < margin && Math.abs(allEnemies[i].y - this.y) < margin) {
@@ -103,7 +102,7 @@ Player.prototype.collide = function () {
             //console.log('collision with enemy');
             }
         }
-};
+}
 
 //instantiates enemy object, passing in x, y, speed
 var enemy1 = new Enemy(-110, 80, randomInt(100, 400));
@@ -117,12 +116,12 @@ allEnemies.push(enemy2);
 allEnemies.push(enemy3);
 
 //instantiates player object
-var player = new Player();
+var player = new Player;
 
 //random positive integer generator
 function randomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
